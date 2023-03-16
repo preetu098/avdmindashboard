@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2023 at 10:46 AM
+-- Generation Time: Mar 16, 2023 at 12:28 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -112,6 +112,61 @@ CREATE TABLE `upi_details` (
 INSERT INTO `upi_details` (`id`, `upi`, `updated_at`) VALUES
 (1, 'asifdev5@hdfcok', '2023-03-16 07:54:08');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `otp` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `updated_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `phone_number`, `password`, `otp`, `status`, `updated_on`) VALUES
+(1, 'Arsh', '9589642080', 'Ars@3sss', 'ds', 1, '0000-00-00 00:00:00'),
+(3, 'Radha', '9876543210', '1234', 'ds', 1, '2023-03-04 00:00:00'),
+(5, 'aasif ahmed', '8878326802', 'Almas2a', '978', 1, '2023-03-14 06:11:48'),
+(6, 'brijlal pawar', '8224939597', '4482', '6353', 1, '2023-03-16 12:25:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_bank_details`
+--
+
+CREATE TABLE `user_bank_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `bank` varchar(255) NOT NULL,
+  `ifsc` varchar(255) NOT NULL,
+  `account` varchar(255) NOT NULL,
+  `upi` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `address` text NOT NULL,
+  `mobile` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_bank_details`
+--
+
+INSERT INTO `user_bank_details` (`id`, `user_id`, `name`, `bank`, `ifsc`, `account`, `upi`, `state`, `city`, `address`, `mobile`, `email`, `updated_at`) VALUES
+(1, 0, 'aasif ahmed', 'hdfc', 'indb0000011', '5454', 'asifdev5@hdfcok', 'mp', 'indore', 'azad nagar indore 452001', '5465434534', 'ankita@hotmail.com', '2023-03-16 12:08:52');
+
 --
 -- Indexes for dumped tables
 --
@@ -141,6 +196,18 @@ ALTER TABLE `upi_details`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_bank_details`
+--
+ALTER TABLE `user_bank_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -166,6 +233,18 @@ ALTER TABLE `recharge_details`
 -- AUTO_INCREMENT for table `upi_details`
 --
 ALTER TABLE `upi_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user_bank_details`
+--
+ALTER TABLE `user_bank_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 

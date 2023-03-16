@@ -43,7 +43,7 @@
     <div class="wrapper" style="background-color:black!important">
         <header class="main-header" >
             <!-- Logo -->
-            <a href="desktop.php" class="logo">
+            <a href="dashboard.php" class="logo">
                 <span class="logo-mini"><b>Admin<!--<img src="images/smalllogo.png">--></b></span>
                 <span class="logo-lg"><b>Admin <!--<img src="images/logo.jpg">--></b></span>
             </a>
@@ -105,7 +105,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
 
-                    <li class="active treeview"> <a href="desktop.php"> <i class="fa fa-dashboard"></i>
+                    <li class="active treeview"> <a href="dashboard.php"> <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span> </a></li>
                     <!-- <li class="treeview"> <a href="#"> <i class="fa fa-list-alt"></i><span>Manage Admins</span><i
                                 class="fa fa-angle-left pull-right"></i></a>
