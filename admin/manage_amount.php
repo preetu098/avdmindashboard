@@ -1,246 +1,204 @@
-<?php include('header.php');?>
+
+<?php include('header.php'); ?>
 <div class="content-wrapper">
 
-    
-
-
-
-<!-- Main content -->
-
-<section class="content">
-
- <section class="content-header">
-    <h1>Amount Setup</h1>
-    <ol class="breadcrumb">
-      <li><a href="desktop.php"><i class="fa fa-dashboard"></i>Home</a></li>
-      <li class="active">Amount Setup</li>
-    </ol>
-  </section>
-
-  
-
-
   <!-- Main content -->
+
   <section class="content">
-    <div class="row">
-    <div class="col-xs-12 text-center">
-        
+
+    <section class="content-header">
+      <h1>Amount Setup</h1>
+      <ol class="breadcrumb">
+        <li><a href="dashboard.php"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Amount Setup</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12 text-center">
+
         </div>
-      <div class="col-xs-12">
-        
+        <div class="col-xs-12">
 
-        <div class="box">
-          
-          <!-- /.box-header -->
+          <div class="box">
 
+            <!-- /.box-header -->
 
+            <form id="formID" name="formID" method="post" action="save_manage_amount.php"
+              enctype="multipart/form-data">
 
-        
-     <form id="formID" name="formID" method="post" action="/admin/manage_amount.php" enctype="multipart/form-data">
+              <div class="box-body">
 
-          <div class="box-body">
+                <div class="clearfix"></div>
 
-<div class="clearfix"></div>
 
 
+                <div class="col-sm-6">
 
-<div class="col-sm-6">
+                  <div class="form-group">
 
-            <div class="form-group">
+                    <label>Minium Recharge Amount</label>
 
-            <label>Minium Recharge Amount</label>
+                    <input type="text" class="form-control" onkeypress="return isNumber(event)" name="mra" id="mra"
+                      required value="">
 
-            <input type="text" class="form-control" onkeypress="return isNumber(event)" name="mra" id="mra" required value="500">
+                  </div>
 
-            </div>
+                </div>
 
-            </div>
+                <div class="col-sm-6">
 
-<div class="col-sm-6">
+                  <div class="form-group">
 
-            <div class="form-group">
+                    <label>Minimum Withdrawal Amount</label>
 
-            <label>Minimum Withdrawal Amount</label>
+                    <input type="text" class="form-control" onkeypress="return isNumber(event)" name="mwa" id="mwa"
+                      required value="">
 
-            <input type="text" class="form-control" onkeypress="return isNumber(event)" name="mwa" id="mwa" required value="500">
+                  </div>
 
-            </div>
+                </div>
 
-            </div>          
+                <div class="col-sm-6">
 
-<div class="col-sm-6">
+                  <div class="form-group">
 
-            <div class="form-group">
+                    <label>Interest Rate <i class="red_txt">[in %]</i></label>
 
-            <label>Interest Rate <i class="red_txt">[in %]</i></label>
+                    <input type="text" class="form-control" name="ib" id="ib" required value="">
 
-            <input type="text" class="form-control"  name="ib" id="ib" required value="0.8%">
+                  </div>
 
-            </div>
+                </div>
 
-            </div>
+                <div class="col-sm-6">
 
-<div class="col-sm-6">
+                  <div class="form-group">
 
-            <div class="form-group">
+                    <label>Recharge Bonus <i class="red_txt">[in %]</i></label>
 
-            <label>Recharge Bonus <i class="red_txt">[in %]</i></label>
+                    <input type="number" class="form-control" onkeypress="return isNumber(event)" name="rb" id="rb"
+                      required value="">
 
-            <input type="number" class="form-control" onkeypress="return isNumber(event)" name="rb" id="rb" required value="0">
+                  </div>
 
-            </div>
+                </div>
 
-            </div>
+                <div class="col-sm-6">
 
+                  <div class="form-group">
 
+                    <label>Level1 Commission Percent <i class="red_txt">[in %]</i></label>
 
+                    <input type="text" class="form-control" name="level1" id="level1" required value="">
 
-<div class="col-sm-6">
+                  </div>
 
-            <div class="form-group">
+                </div>
 
-            <label>Level1 Commission Percent <i class="red_txt">[in %]</i></label>
+                <div class="col-sm-6">
 
-            <input type="text" class="form-control" name="level1" id="level1" required value="2">
+                  <div class="form-group">
 
-            </div>
+                    <label>Level2 Commission Percent <i class="red_txt">[in %]</i></label>
 
-            </div>
+                    <input type="text" class="form-control" name="level2" id="level2" required value="">
 
-<div class="col-sm-6">
+                  </div>
 
-            <div class="form-group">
+                </div>
 
-            <label>Level2 Commission Percent <i class="red_txt">[in %]</i></label>
+                <div class="col-sm-6">
 
-            <input type="text" class="form-control"  name="level2" id="level2" required value="1">
+                  <div class="form-group">
 
-            </div>
+                    <label>Level3 Commission Percent <i class="red_txt">[in %]</i></label>
 
-            </div>
-            
-            <div class="col-sm-6">
+                    <input type="text" class="form-control" name="level3" id="level3" required value="">
 
-            <div class="form-group">
+                  </div>
 
-            <label>Level3 Commission Percent <i class="red_txt">[in %]</i></label>
+                </div>
 
-            <input type="text" class="form-control"  name="level3" id="level3" required value="0.5">
 
-            </div>
+                <div class="col-sm-6">
 
-            </div>
+                  <div class="form-group">
 
+                    <label>Wagar X <i class="red_txt">[Enter Digit For Multiply]</i></label>
 
+                    <input type="text" class="form-control" name="wagar" id="wagar" required value="">
 
+                  </div>
 
+                </div>
 
-            
-            
-            <div class="col-sm-6">
+                <div class="col-sm-6">
 
-            <div class="form-group">
+                  <div class="form-group">
 
-            <label>Wagar X <i class="red_txt">[Enter Digit For Multiply]</i></label>
+                    <label>Sign Up Bonus</label>
 
-            <input type="text" class="form-control"  name="wagar" id="wagar" required value="0">
+                    <input type="text" class="form-control" name="regbonus" id="regbonus" required value="">
 
-            </div>
+                  </div>
 
-            </div>
+                </div>
 
-<div class="col-sm-6">
+                <div class="col-sm-6">
 
-            <div class="form-group">
+                  <div class="form-group">
 
-            <label>Sign Up Bonus</label>
+                    <label>Withdrawal Status </label>
 
-            <input type="text" class="form-control"  name="regbonus" id="regbonus" required value="50">
 
-            </div>
+                    <select class="form-control" name="withdrawal_status">
+                      <option value="">Please select</option>
+                      <option value="on" >On</option>
+                      <option value="off">Off</option>
 
-            </div>  
+                    </select>
 
+                  </div>
 
+                </div>
 
-<div class="col-sm-6">
+                <div class="clearfix"></div>
 
-            <div class="form-group">
+                <div class="form-group">
 
-            <label>Withdrawal Status </label>
+                  <div class="text-center">
 
-           
-<select class="form-control" name="withdrawal_status">
+                    <input type="submit" class="btn btn-primary" value="Submit" name="submit">
+                  </div>
 
+                </div>
 
-
-
-
-<option value="on" selected>On</option><option value="off">Off</option>
-
-  
-
-
-
-
-
-
-</select>
-
-            </div>
-
-            </div> 
-
-
-
-
-
-
-            
-
-
-
-           <div class="clearfix"></div>   
-
-            <div class="form-group">
-
-            <div class="text-center">
-
-
-
-<input type="submit" class="btn btn-primary" value="Submit"  name="site_setting" ></div>
-
-              </div> 
-
-             </div>
+              </div>
 
               <div class="clearfix"></div>
 
-           
+            </form>
 
+            <!-- /.box-body -->
 
+          </div>
 
-
-
-        </form>
-
-          <!-- /.box-body -->
+          <!-- /.box -->
 
         </div>
 
-        <!-- /.box -->
+        <!-- /.col -->
 
       </div>
 
-      <!-- /.col -->
+      <!-- /.row -->
 
-    </div>
+    </section>
 
-    <!-- /.row -->
-
-  </section>
-
-  <!-- /.content -->
+    <!-- /.content -->
 
 </div>
 
@@ -249,4 +207,4 @@
 
 
 <div class="clearfix"></div>
-<?php include('footer.php');?>
+<?php include('footer.php'); ?>
