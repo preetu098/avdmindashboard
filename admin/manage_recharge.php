@@ -92,7 +92,7 @@ include('header.php'); ?>
                         <td>
 
                           <a class="btn btn-success"
-                            href="approve_recharge_request.php?id=<?php echo $row['id'] ?>&user_id=<?php echo $row['user_id']; ?>">Approve</a>
+                            href="approve_recharge_request.php?id=<?php echo $row['id'] ?>&user_id=<?php echo $row['user_id']; ?>&recharge_amount=<?php echo $row['recharge_amount'];?>">Approve</a>
                           <a class="btn btn-danger"
                             href="reject_recharge_request.php?id=<?php echo $row['id'] ?>&user_id=<?php echo $row['user_id']; ?>">Reject</a>
                         </td>
