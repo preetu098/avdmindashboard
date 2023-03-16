@@ -1,9 +1,4 @@
 
-
-  
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,13 +225,24 @@ button {
 <h3 class="amount-title">
 Payment Amount
 <br>
-<span>₹&nbsp;2,000.00 </span>
+<span>₹&nbsp;<?php 
+
+echo $_POST['user_amount'];
+?> </span>
+<form method="post" action="recharge_success.php">
+<input type="hidden" name="recharge_amount" value="<?php echo $_POST['user_amount']; ?>">
  </h3><hr><h2 style="padding-left: 10px;">
 <b>UPI Information</b></h2>
 <div style="padding-right: 4%;" class="upi-info">
 <div style="padding-left: 2%;">
 Pay to UPI: <br>
-<input  readonly="readonly" id="myInput" value="jo admin add kre bo dekhana hai"  style="color: #ff0000; font-size: 16px;">
+<input  readonly="readonly" id="upi" name="upi" value="<?php
+include('connection.php');
+$sql="select * from upi_details  order by id desc";
+$result=mysqli_query($connection,$sql);
+$upi_info=mysqli_fetch_assoc($result);
+ echo $upi_info['upi'];
+?>"  style="color: #ff0000; font-size: 16px;">
 </div>
 
 <a class="btn-copy"  onclick="myFunction()"  style=" background-color: Blue;  text-align: center;width: 60px;font-size:16px">copy</a>
@@ -268,11 +274,11 @@ Pay With QR: <br>
 
 <h3 style="padding-left: 10px;"><b>Open online banking or wallet, transfer the amount to the UPI account or bank</b></h3>
 
-<form method="post" action="#">
+
     
 <div class="upi-payment-step">
 
-<input type="text" id="upi-input" value="" name="channel_order" placeholder="ENTER REF NO.:1347xxxxxxxx" maxlength="12" oninput="this.value=this.value.replace(/[^\d]/g,'')" pattern=".{12,12}"  onchange="this.value=this.value.replace(/[^\d]/g,'')" required>
+<input type="text" id="upi-input" value="" name="transaction_number" placeholder="ENTER REF NO.:1347xxxxxxxx" maxlength="12" oninput="this.value=this.value.replace(/[^\d]/g,'')" pattern=".{12,12}"  onchange="this.value=this.value.replace(/[^\d]/g,'')" required>
 
 </div><h3 style="padding-left: 10px;"><b>Enter Payment details Above and complete Recharge.</b></h3>
 <div class="enter-ref-warn-box">
@@ -280,7 +286,7 @@ Pay With QR: <br>
 You must fill in the correct Ref No.,then click the button below to submit,and wait for it to arrive!
 </div>
 <div class="btns" type="submit" style="margin-top: 0;margin-bottom:20px;">
- <button type="submit"  name="submitRecharge"><a class="btn sub" style="width: 200px; background-color: Blue;" name="submitRecharge">Confirm REF NO.</a></button>
+ <button type="submit"  name="submit"><a class="btn sub" style="width: 200px; background-color: Blue;">Confirm REF NO.</a></button>
 </div>
 </form>
 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2023 at 07:54 AM
+-- Generation Time: Mar 16, 2023 at 10:46 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `aviator`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(15) NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `password`, `date`) VALUES
+(1, 'admin@gmail.com', 'admin123', '2021-02-27');
 
 -- --------------------------------------------------------
 
@@ -53,6 +73,29 @@ INSERT INTO `amount_setup` (`id`, `mra`, `mwa`, `ib`, `rb`, `level1`, `level2`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `recharge_details`
+--
+
+CREATE TABLE `recharge_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `recharge_amount` decimal(32,2) NOT NULL,
+  `upi` varchar(255) NOT NULL,
+  `transaction_number` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `recharge_details`
+--
+
+INSERT INTO `recharge_details` (`id`, `user_id`, `recharge_amount`, `upi`, `transaction_number`, `status`, `updated_at`) VALUES
+(1, 1, '500.00', 'asifdev5@hdfcok', '545656767678', -2, '2023-03-16 09:52:12');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `upi_details`
 --
 
@@ -74,9 +117,21 @@ INSERT INTO `upi_details` (`id`, `upi`, `updated_at`) VALUES
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `amount_setup`
 --
 ALTER TABLE `amount_setup`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `recharge_details`
+--
+ALTER TABLE `recharge_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -90,9 +145,21 @@ ALTER TABLE `upi_details`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `amount_setup`
 --
 ALTER TABLE `amount_setup`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `recharge_details`
+--
+ALTER TABLE `recharge_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
