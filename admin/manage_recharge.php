@@ -1,11 +1,16 @@
-<?php include('header.php'); ?>
+<?php 
+session_start();
+error_reporting(E_ALL & ~E_NOTICE);
+
+if ($_SESSION['ID'] > 0) {
+include('header.php'); ?>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <br></br>
     <ol class="breadcrumb">
-      <li><a href="desktop.php"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Manage Recharge Request</li>
     </ol>
   </section>
@@ -126,4 +131,8 @@
 
 <div class="clearfix"></div>
 
-<?php include('footer.php'); ?>
+<?php include('footer.php'); 
+} else {
+  echo "<script>window.location='adminLogin.php' </script>";
+}
+?>
