@@ -65,7 +65,6 @@ include('header.php'); ?>
                       // print_r($row);
                       ?>
 
-
                       <tr>
                         <td>
                           <?php echo $count++; ?>

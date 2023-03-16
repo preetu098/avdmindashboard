@@ -58,7 +58,7 @@ include('header.php'); ?>
                   <?php
                   $count = 1;
                   include('connection.php');
-                  $sql = "select * from recharge_details ";
+                  $sql = "select * from recharge_details where status=2 ";
                   $result = mysqli_query($connection, $sql);
                   if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
