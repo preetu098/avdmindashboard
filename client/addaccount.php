@@ -1,3 +1,7 @@
+<?php
+session_start();
+if ($_SESSION["ID"] > 0) {
+?>
 <!doctype html>
 <html lang="en">
 
@@ -117,7 +121,7 @@
   <div id="appCapsule">
     <div class="appContent1" style="margin-top:-25px;">
       <form action="save_bank_details.php" method="post">
-
+      <input type="hidden" name="user_id" value="<?php echo $_GET['user_id']; ?>">
         <div class="form-group  mt-3">
           <label for="name">Actual Name</label>
           <input type="text" class="form-control textarea " id="name" name="name" required value="">
@@ -213,3 +217,8 @@
 </body>
 
 </html>
+<?php
+}else{
+  header("Location:login.php");
+}
+?>

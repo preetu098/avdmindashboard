@@ -1,4 +1,8 @@
 
+<?php
+session_start();
+if ($_SESSION["ID"] > 0) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -228,8 +232,10 @@ Payment Amount
 <span>₹&nbsp;<?php 
 
 echo $_POST['user_amount'];
+
 ?> </span>
 <form method="post" action="recharge_success.php">
+<input type="hidden" name="user_id" value="<?php echo $_POST['user_id']; ?>">
 <input type="hidden" name="recharge_amount" value="<?php echo $_POST['user_amount']; ?>">
  </h3><hr><h2 style="padding-left: 10px;">
 <b>UPI Information</b></h2>
@@ -479,3 +485,8 @@ var x = document.getElementById("copied");
 
 <script src="/static/plugins/gateway/gateway_v4.min.js?v=1.1"></script>
 </html>
+<?php
+}else{
+  header("Location:login.php");
+}
+?>
