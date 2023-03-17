@@ -5,7 +5,7 @@ include('header.php');
 include('connection.php');
 
 ?>
-<body class="" style="margin-top:-400px;background-color: rgb(205, 27, 27);">
+<body class="" style="margin-top:-450px;background-color: rgb(205, 27, 27);">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -34,7 +34,7 @@ include('connection.php');
         <?php
         // Report all errors except E_NOTICE
         error_reporting(E_ALL & ~E_NOTICE);
-        print_r($_SESSION);
+        
         $sql = "select * from users where phone_number='" . $_SESSION['phone_number'] . "'";
         $result = mysqli_query($connection, $sql);
         $user_info = mysqli_fetch_assoc($result);
