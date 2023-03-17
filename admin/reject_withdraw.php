@@ -48,7 +48,7 @@ if ($_SESSION['ID'] > 0) {
                                             <th>Amount</th>
                                             <th>Transfer</th>
                                             <th>5% Fees</th>
-                                            <th>Payout Type</th>
+                                            <!-- <th>Payout Type</th> -->
                                             <th>Req. Date</th>
                                             <th>Rejected</th>
                                         </tr>
@@ -78,7 +78,7 @@ if ($_SESSION['ID'] > 0) {
                                                     <td>
                                                         <?php echo $row['withdraw_fees']; ?>
                                                     </td>
-                                                    <td></td>
+                                                    <!-- <td></td> -->
                                                    
                                                     
                                                     <td>

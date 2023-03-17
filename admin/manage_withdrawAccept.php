@@ -43,7 +43,7 @@ if ($_SESSION['ID'] > 0) {
 
                       <th>User Mobile</th>
                       <th>Amount</th>
-                      <th>Payout Type</th>
+                      <!-- <th>Payout Type</th> -->
                       <th>Req. Date</th>
                       <th>Action</th>
                     </tr>
@@ -76,7 +76,7 @@ if ($_SESSION['ID'] > 0) {
                           <td>
                             <?php echo $row['withdraw_amount'] ?>
                           </td>
-                          <td></td>
+                          <!-- <td></td> -->
                           <td>
                             <?php echo $row['updated_on']; ?>
                           </td>
