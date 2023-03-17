@@ -1,5 +1,8 @@
+<?php
+session_start();
+if ($_SESSION["ID"] > 0) {
+?>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -125,7 +128,7 @@
       height: 48px;
       border-radius: 4px;
       box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-    
+
       padding: 0 15px;
       display: flex;
       flex-direction: row;
@@ -224,9 +227,12 @@
   </style>
   <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -253,20 +259,19 @@
     font-weight: 400;" class="text-center m-2">Balance: <span>₹ 50.00</span></h5>
 
 
-      <form action="#" id="paymentForm" method="post" class="" autocomplete="off" novalidate="novalidate">
+      <form action="withdrawalNow.php"  method="post" class="" autocomplete="off" novalidate="novalidate">
         <div class="boxinput">
           <div class="underinput" style="background-color:white!important">
-          
-            <input style="padding-left: 20px;" type="number" id="userammount" name="userammount"
-              class="form-control" placeholder="Enter withdrawal amount" onkeypress="return isNumber(event)"
-              maxlength="6" >
+
+            <input style="padding-left: 20px;" type="number" id="user_amount" name="user_amount" class="form-control"
+              placeholder="Enter withdrawal amount" onkeypress="return isNumber(event)" maxlength="6">
           </div>
         </div>
 
 
         <div class="fee">
           Fee : <span id="fee">0.00</span>, to Account : <span id="toAccount">0.00</span><input type="hidden"
-            id="toAccountInput" name="userammount_1">
+            id="toAccountInput" name="user_amount_1">
         </div>
 
 
@@ -291,8 +296,23 @@
 
             <img src="images/walletb.png">
             <select class="form-control select2 textbox" name="acid" id="acid" style="padding-left:45px;">
-              <option selected="selected" value="">Select Bank Detail</option>
-              <option value="" style="color:#f00;">Not found</option>
+              <option value="">Select Bank Detail</option>
+              <?php
+              include('connection.php');
+              $sql = "select * from user_bank_details where user_id='".$_GET['user_id']."' order by id desc";
+              $result = mysqli_query($connection, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  ?>
+                  <option value="<?php echo $row['id'] ?>"><?php echo $row['bank'] . '-' . $row['account']; ?></option>
+                  <?php
+                }
+              } else {
+                ?>
+                <option value="" style="color:#f00;">Not found</option>
+              <?php }
+              ?>
+
             </select>
           </div>
         </div> <br>
@@ -306,10 +326,10 @@
 
 
 
-        <input type="hidden" name="userid" value="11753">
+        <input type="hidden" name="user_id" value="<?php echo $_GET['user_id'];?>">
         <input type="hidden" name="action" value="withdrawal">
         <div class="text-center recharge_btn">
-          <button type="submit" class="rechabtn"> Withdrawal </button>
+          <button type="submit" class="rechabtn" name="submit"> Withdrawal </button>
 
         </div>
       </form>
@@ -371,7 +391,7 @@
       $("#paymentForm").validate({
 
         rules: {
-          userammount: {
+          user_amount: {
             required: true,
             number: true,
             min: 500,
@@ -431,22 +451,22 @@
       $("#paymentForm").on('submit', (function (e) {
         e.preventDefault();
 
-        var userammount = $('input#userammount').val();
+        var user_amount = $('input#user_amount').val();
         var acid = $('select#acid').val();
-        //alert(userammount);	
-        if ((userammount) == "") {
-          $("input#userammount").focus();
-          $('#userammount').addClass('borderline');
+        //alert(user_amount);	
+        if ((user_amount) == "") {
+          $("input#user_amount").focus();
+          $('#user_amount').addClass('borderline');
           return false;
         }
-        if (userammount < 500) {
-          $("input#userammount").focus();
-          $('#userammount').addClass('borderline');
+        if (user_amount < 500) {
+          $("input#user_amount").focus();
+          $('#user_amount').addClass('borderline');
           return false;
         }
-        if (userammount > 100000) {
-          $("input#userammount").focus();
-          $('#userammount').addClass('borderline');
+        if (user_amount > 100000) {
+          $("input#user_amount").focus();
+          $('#user_amount').addClass('borderline');
           return false;
         }
         if ($('input[name="optionsname"]:checked').length == 0) {
@@ -475,7 +495,7 @@
             var arr = html.split('~');
 
             if (arr[0] == 1) {
-              $('input#userammount').val('');
+              $('input#user_amount').val('');
               $('#alert').modal({ backdrop: 'static', keyboard: false })
               $('#alert').modal('show');
               document.getElementById('alertmessage').innerHTML = "<h4>Success !</h4><p>Withdrawal request send succesfully ! <p></>";
@@ -551,10 +571,10 @@
   </script>
   <script>
     $(document).ready(function () {
-      $('#userammount').on('keyup', function () {
+      $('#user_amount').on('keyup', function () {
         var percentage = 0.05;
         var balance = account = toAccount = 0;
-        balance = $('#userammount').val();
+        balance = $('#user_amount').val();
         account = balance * percentage;
 
         toAccount = balance - account;
@@ -563,6 +583,7 @@
         $('#toAccount').html(toAccount);
         $('#toAccountInput').val(toAccount);
         $('#fee').html(account);
+        $('#withdraw_fee').val(account);
       });
     });
 
@@ -593,3 +614,8 @@
 </body>
 
 </html>
+<?php
+}else{
+  header("Location:login.php");
+}
+?>

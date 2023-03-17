@@ -149,7 +149,7 @@
                             <li> <a href="manage_withdraw.php"><i class="fa fa-circle-o"></i>Withdrawal Request</a></li>
                             <li> <a href="manage_withdrawAccept.php"><i class="fa fa-circle-o"></i>Withdrawal Accept</a>
                             </li>
-                            <li> <a href="manage_withdrawReject.php"><i class="fa fa-circle-o"></i>Withdrawal Reject</a>
+                            <li> <a href="reject_withdraw.php"><i class="fa fa-circle-o"></i>Withdrawal Reject</a>
                             </li>
                         </ul>
                     </li>

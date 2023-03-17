@@ -50,7 +50,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="recharge.php?user_id=<?php echo $_SESSION['ID'] ; ?>" style="color: rgb(205, 27, 27);">Recharge</a></li>
-          <li><a class="nav-link scrollto" href="withdraw.php" style="color: rgb(205, 27, 27);">Withdraw</a></li>
+          <li><a class="nav-link scrollto" href="withdrawl.php?user_id=<?php echo $_SESSION['ID'] ; ?>" style="color: rgb(205, 27, 27);">Withdraw</a></li>
           <li><a class="nav-link scrollto" href="addaccount.php?user_id=<?php echo $_SESSION['ID'] ; ?>" style="color: rgb(205, 27, 27);">Add Bank Details</a></li>
           <li><a class="nav-link scrollto" href="referal.php" style="color: rgb(205, 27, 27);">Referal</a></li>
           <li><a class="nav-link   scrollto" href="profile.php" style="color: rgb(205, 27, 27);">Profile</a></li>
