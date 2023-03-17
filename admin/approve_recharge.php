@@ -79,7 +79,7 @@ include('header.php'); ?>
                           <?php echo $row['transaction_number'] ?>
                         </td>
                         <td>
-                          <?php echo $row['updated_at']; ?>
+                          <?php echo date("d-m-Y", strtotime($row['updated_at'])); ?>
                         </td>
                         <td>
                           <?php
