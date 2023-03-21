@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['submit'])) {
 
     $phone_number = $_POST['phone_number'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     $sql = "select * from users where phone_number='$phone_number' and password='$password'";
     $result = mysqli_query($connection, $sql);
